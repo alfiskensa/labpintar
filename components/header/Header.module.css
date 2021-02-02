@@ -1,0 +1,40 @@
+.header {
+  background-color: #FFFDDA;
+  padding-top: 2.563rem;
+  padding-bottom: 2.563rem;
+  font-size: 16px;
+}
+
+.navItem {
+  padding: 0 24px;
+}
+
+.navItem a {
+  color: #272D4E;
+  text-decoration: none;
+}
+
+.navbarBrand {
+  padding-right: 24px;
+}
+
+@media (max-width: 1199px) { 
+  .header {
+    font-size: 0.875em;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .navItem {
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px #ECE5D6 solid;
+  }
+}
+
+@media (max-width: 767.98px) { 
+  .header {
+    padding-top: 1.4rem;
+    padding-bottom: 2rem;
+  }  
+}

@@ -1,0 +1,23 @@
+.section {
+  background-color: #962B28;
+  color: #ffffff;
+  padding: 100px 0;
+}
+
+.card {
+  border: 1px solid #CECECE;
+  border-radius: 8px;
+  padding: 30px 10px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.card img {
+  width: 35%;
+}
+
+@media (max-width: 767.98px) {
+  .card {
+    margin-bottom: 30px;
+  }
+}

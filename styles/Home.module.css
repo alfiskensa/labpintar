@@ -1,0 +1,360 @@
+.slideItem {
+  box-shadow: none;
+  outline:none;
+  padding: 0 30px;
+  width: 80vw;
+  height: calc(100vw/4.24);
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.slideSocmedItem {
+  box-shadow: none;
+  outline:none;
+  padding: 25px;
+  width: calc(90vw/3);
+  height: calc(90vw/3);
+}
+
+.slideSocmedItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 1px solid #ddd;
+  border-radius: 16px;  
+}
+
+.arrowSlideNext {
+  right: 70px;
+  z-index: 1;
+}
+
+.arrowSlideNext,
+.arrowSlideNext:hover {
+  background: url("/icons/right_arrow_icon.png");
+  background-size: 32px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.arrowSlidePrev {
+  left: 70px;
+  z-index: 1;
+}
+
+.arrowSlidePrev,
+.arrowSlidePrev:hover {
+  background: url("/icons/left_arrow_icon.png");
+  background-size: 32px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.arrowSlide {
+  display: block;
+  width: 70px;
+  height: 70px;
+  background-color: #ffffff;
+  box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.08);
+  border-radius: 50%;
+}
+
+.arrowSlide:hover {
+  background-color: #fafafa;
+}
+
+.arrowSlide::before {
+  content: "";
+}
+
+.heroProduct {
+  background: url("/images/product_background.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 49vw;
+  margin-top: 28px;
+  padding-top: 16vw;
+  position: relative;
+}
+
+.heroProduct::before {
+  content: '';
+  width: 300px;
+  height: 150px;
+  background: url("/images/labpintar_section_backgroun.png") no-repeat;
+  background-size: contain;
+  position: absolute;
+  left: 7%;
+  top: 20%;
+}
+
+.heroProduct h1 {
+  font-size: 48px;
+  line-height: 1.3;
+}
+
+.heroProductWrap {
+  padding-left: 8vw;
+  width: 46%;
+}
+
+.heroSubscribe {
+  position: relative;
+  background: url("/images/subscribe_background.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 57.8vw;
+}
+
+.gabungKomunitas {
+  position: relative;
+  background: url("/images/section_join_background.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 57.8vw;
+  margin-top: -28px;
+}
+
+.productDesc {
+  width: 86%;
+  color: #ffffff;
+}
+
+.gabungDesc {
+  width: 40%;
+  margin: 0 auto;
+  color: #ffffff;
+}
+
+.productDescHeader {
+  font-size: 48px;
+}
+
+.productDesc p,
+.gabungDesc p {
+  padding-top: 10%;
+}
+
+.gabungDesc p {
+  padding-bottom: 10%;
+}
+
+.section {
+  padding: 60px 0;
+}
+
+.section h1 {
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sectionSocmed {
+  position: relative;
+}
+
+.testimoni {
+  font-size: 18px;
+  color: rgb(148, 162, 179);
+  text-align: center;
+  width: 80%;
+  margin: 0px auto;
+}
+
+.footerTestimoni {
+  background: url("/images/testimoni_background.png");
+  background-size: cover;
+  width: 100%;
+  background-repeat: no-repeat;
+  height: calc(100vw/4.2);
+}
+
+.sectionSocmed::before {
+  content: " ";
+  background: url("/images/dots_background.png");
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-position: top right;  
+}
+
+.sectionSocmed::after {
+  content: " ";
+  background: url("/images/dots_background.png");
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-position: bottom left;  
+  top: 0;
+  z-index: -1;
+}
+
+.arrowSlideNextSocmed {
+  right: -25px;
+}
+
+.arrowSlidePrevSocmed {
+  left: -25px;
+}
+
+@media (min-width: 1604px) {
+  .slideSocmedItem {
+    box-shadow: none;
+    outline:none;
+    padding: 25px;
+    width: calc(90vw/6);
+    height: calc(90vw/6);
+  }
+}
+
+@media (max-width: 1199.98px) { 
+  .heroSubscribe {
+    height: auto;
+    padding-top: 20px;
+  } 
+}
+
+@media (max-width: 1198.98px) and (min-width: 992px) {
+  .heroProduct h1 {
+    font-size: 40px;
+  }
+}
+
+
+@media (max-width: 991.98px) {
+  .sectionSocmed::before,
+  .sectionSocmed::after {
+    background: none;
+  }
+
+  .arrowSlide {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .slideItem {
+    padding: 0 10px;
+    width: 86vw;
+    height: calc(100vw/3.3);
+  }
+
+  .heroProduct {
+    margin-top: 20px;
+  }
+  
+  .productDesc {
+    width: 100%;
+    margin-left: 0;
+  }
+  
+  .productDescHeader {
+    font-size: 26px;
+  }  
+  
+  .productDesc p {
+    padding-top: 20px;
+  }
+
+  .slideSocmedItem {
+    width: calc(80vw/2);
+    height: calc(80vw/2);
+  } 
+  
+  .arrowSlideNextSocmed {
+    right: 0;
+  }
+  
+  .arrowSlidePrevSocmed {
+    left: 0;
+  }
+
+  .heroProduct h1 {
+    font-size: 30px;
+  }
+
+
+  .heroSubscribe {
+    background: none;
+    background-color: #962B28;
+    padding: 60px 0;
+  }
+
+  .gabungDesc { 
+    width: 76%;
+  }
+
+  .gabungDesc p { 
+    font-size: 14px;
+  }
+
+  .heroProduct::before {
+    width: 30%;
+    left: 2%;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .section h1 {
+    font-size: 26px;
+  }  
+  
+  .slideItem {
+    padding: 0 10px;
+    width: 85vw;
+    height: 14vw;
+  }
+
+  .arrowSlide {
+    display: none;
+  }
+
+  .heroProduct h1 {
+    font-size: 14px;
+  }
+
+  .productDescHeader {
+    font-size: 24px;
+  }  
+  
+  .productDesc p {
+    font-size: 12px;
+    padding-top: 10px;
+    margin-bottom: 2rem;
+  }
+
+  .heroProductWrap {
+    padding-left: 6vw;
+    /* width: 38%; */
+  }
+
+  .testimoni { 
+    font-size: 14px;
+  }
+  
+  .section {
+    padding: 20px 0;
+  }  
+
+  .slideSocmedItem {
+    width: 60vw;
+    height: 60vw;
+    padding: 10px;
+  } 
+
+  .gabungKomunitas {
+    background: url("/images/section_join_background_sm.png") no-repeat;
+    height: 129.8vw;
+    background-size: 100%;
+  }
+
+  .sectionSocmed {
+    margin-left: -21px;
+    margin-right: -21px;
+  }
+
+  .heroProduct::before {
+    width: 25%;
+  }
+}
