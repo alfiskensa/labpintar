@@ -214,13 +214,14 @@ function HeroSocmed() {
   var images = [];
 
   const fetcher = url => axios.get(url).then(res => res.data)
-  const { data, error } = useSWR(process.env.NEXT_PUBLIC_IG_USER, fetcher)
+  const IG_USER = 'https://www.instagram.com/labpintar/?__a=1';
+  const { data, error } = useSWR(IG_USER, fetcher)
   
   if (error) return <div>failed to load</div>
   if (!data) return <div>Loading...</div>
 
-  if (data.data.user && data.data.user.edge_owner_to_timeline_media && data.data.user.edge_owner_to_timeline_media.edges) {
-    images = getIgImages(data.data.user.edge_owner_to_timeline_media.edges)
+  if (data.graphql.user && data.graphql.user.edge_owner_to_timeline_media && data.graphql.user.edge_owner_to_timeline_media.edges) {
+    images = getIgImages(data.graphql.user.edge_owner_to_timeline_media.edges)
   }
   if (images.length < 1) {
     return <></>
