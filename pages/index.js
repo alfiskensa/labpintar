@@ -224,6 +224,10 @@ function HeroSocmed() {
     if (data.graphql.user && data.graphql.user.edge_owner_to_timeline_media && data.graphql.user.edge_owner_to_timeline_media.edges) {
       images = getIgImages(data.graphql.user.edge_owner_to_timeline_media.edges)
     }
+  } else {
+    if (data.user && data.user.edge_owner_to_timeline_media && data.user.edge_owner_to_timeline_media.edges) {
+      images = getIgImages(data.user.edge_owner_to_timeline_media.edges)
+    }
   }
   if (images.length < 1) {
     return <></>
