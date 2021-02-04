@@ -219,6 +219,8 @@ function HeroSocmed() {
   
   if (error) return <div>failed to load</div>
   if (!data) return <div>Loading...</div>
+  var debug = require('debug')('http');
+  debug(data);
   console.log(data);
   if(data.graphql){
     if (data.graphql.user && data.graphql.user.edge_owner_to_timeline_media && data.graphql.user.edge_owner_to_timeline_media.edges) {
