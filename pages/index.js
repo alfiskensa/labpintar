@@ -220,8 +220,10 @@ function HeroSocmed() {
   if (error) return <div>failed to load</div>
   if (!data) return <div>Loading...</div>
   console.log(data);
-  if (data.graphql.user && data.graphql.user.edge_owner_to_timeline_media && data.graphql.user.edge_owner_to_timeline_media.edges) {
-    images = getIgImages(data.graphql.user.edge_owner_to_timeline_media.edges)
+  if(data.graphql){
+    if (data.graphql.user && data.graphql.user.edge_owner_to_timeline_media && data.graphql.user.edge_owner_to_timeline_media.edges) {
+      images = getIgImages(data.graphql.user.edge_owner_to_timeline_media.edges)
+    }
   }
   if (images.length < 1) {
     return <></>
