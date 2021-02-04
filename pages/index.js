@@ -294,9 +294,9 @@ export default function Home() {
       <div className="pb-5">
         <HeroSubscribe />
       </div>
-      {/* <div className={styles.section}>
+      <div className={styles.section}>
         <HeroSocmed />
-      </div> */}
+      </div>
       <div className={styles.section}>
         <HeroTestimoni /><br/><br/><br/>
       </div>
