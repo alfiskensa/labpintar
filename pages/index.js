@@ -226,7 +226,13 @@ function HeroSocmed() {
     }
   } else {
       try {
-        const userInfoSource = await Axios.get('https://www.instagram.com/labpintar/')
+        const fetcher = url => axios.get(url).then(res => res.data)
+        const { data, error } = useSWR("https://www.instagram.com/labpintar/", fetcher)
+        
+        if (error) return <div>failed to load</div>
+        if (!data) return <div>Loading...</div>
+
+        const userInfoSource = data;
 
         // userInfoSource.data contains the HTML from Axios
         const jsonObject = userInfoSource.data.match(/<script type="text\/javascript">window\._sharedData = (.*)<\/script>/)[1].slice(0, -1)
