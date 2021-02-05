@@ -226,8 +226,10 @@ function HeroSocmed() {
     }
   } else {
       try {
+        const userInfoSource = await Axios.get('https://www.instagram.com/labpintar/')
+
         // userInfoSource.data contains the HTML from Axios
-        const jsonObject = data.match(/<script type="text\/javascript">window\._sharedData = (.*)<\/script>/)[1].slice(0, -1)
+        const jsonObject = userInfoSource.data.match(/<script type="text\/javascript">window\._sharedData = (.*)<\/script>/)[1].slice(0, -1)
 
         const userInfo = JSON.parse(jsonObject)
         // Retrieve only the first 10 results
@@ -241,7 +243,7 @@ function HeroSocmed() {
             }
 
             // Push the thumbnail src in the array
-            iamges.push(node.thumbnail_src)
+            res.push(node.thumbnail_src)
         }
     } catch (e) {
         console.error('Unable to retrieve photos. Reason: ' + e.toString())
