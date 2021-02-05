@@ -219,12 +219,32 @@ function HeroSocmed() {
   
   if (error) return <div>failed to load</div>
   if (!data) return <div>Loading...</div>
-  var debug = require('debug')('http');
-  debug(data);
   console.log(data);
   if(data.graphql){
     if (data.graphql.user && data.graphql.user.edge_owner_to_timeline_media && data.graphql.user.edge_owner_to_timeline_media.edges) {
       images = getIgImages(data.graphql.user.edge_owner_to_timeline_media.edges)
+    }
+  } else {
+      try {
+        // userInfoSource.data contains the HTML from Axios
+        const jsonObject = data.match(/<script type="text\/javascript">window\._sharedData = (.*)<\/script>/)[1].slice(0, -1)
+
+        const userInfo = JSON.parse(jsonObject)
+        // Retrieve only the first 10 results
+        const mediaArray = userInfo.entry_data.ProfilePage[0].graphql.user.edge_owner_to_timeline_media.edges.splice(0, 10)
+        for (let media of mediaArray) {
+            const node = media.node
+            
+            // Process only if is an image
+            if ((node.__typename && node.__typename !== 'GraphImage')) {
+                continue
+            }
+
+            // Push the thumbnail src in the array
+            iamges.push(node.thumbnail_src)
+        }
+    } catch (e) {
+        console.error('Unable to retrieve photos. Reason: ' + e.toString())
     }
   }
   if (images.length < 1) {
