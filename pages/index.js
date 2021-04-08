@@ -153,7 +153,7 @@ function SocmedSlider({ igImages }) {
         return (
           <div key={`sliderSocmed_${index}`}>
             <div className={styles.slideSocmedItem}>
-              <a href={`https://www.instagram.com/p/${item.shortcode}`} target="_blank">
+              <a href={`${item.shortcode}`} target="_blank">
                 <img src={item.thumbnail} />
               </a>
             </div>
@@ -204,37 +204,28 @@ function HeroSocmed() {
 
     edges.map((item) => {
       lists.push({
-        'thumbnail': item.thumbnail_src,
-        'shortcode': item.shortcode
+        'thumbnail': item.media_url,
+        'shortcode': item.permalink
       })
     })
     return lists
   }
 
   var images = [];
-  images = getIgImages(instagramPhotos());
-  // const fetcher = url => axios.get(url).then(res => res.data)
-  // const IG_USER = 'https://www.instagram.com/labpintar/?__a=1';
-  // const { data, error } = useSWR(IG_USER, fetcher)
+
+  const fetcher = url => axios.get(url).then(res => res.data)
+  const { data, error } = useSWR('/api/ig', fetcher)
   
-  // if (error) return <div>failed to load</div>
-  // if (!data) return <div>Loading...</div>
-  // console.log(data);
-  // if(data.graphql){
-  //   if (data.graphql.user && data.graphql.user.edge_owner_to_timeline_media && data.graphql.user.edge_owner_to_timeline_media.edges) {
-  //     images = getIgImages(data.graphql.user.edge_owner_to_timeline_media.edges)
-  //   }
-    
-  // } else {
-  //     try {
-  //      images = instagramPhotos();
-  //   } catch (e) {
-  //       console.error('Unable to retrieve photos. Reason: ' + e.toString())
-  //   }
-  // }
-  // if (images.length < 1) {
-  //   return <></>
-  // }
+  if (error) return <div>failed to load</div>
+  if (!data) return <div>Loading...</div>
+
+  if (data) {
+    console.log(data);
+    images = getIgImages(data)
+  }
+  if (images.length < 1) {
+    return <></>
+  }
   return (
     <div className="container">
        <h1>LabPintar di Media Sosial</h1>
@@ -245,42 +236,6 @@ function HeroSocmed() {
         </div>
     </div>
   );
-}
-
-function instagramPhotos () {
-  // It will contain our photos' links
-  const res = []
-  
-  try {
-      const fetcher = url => axios.get(url).then(res => res.data)
-      const IG_USER = 'https://www.instagram.com/labpintar/';
-      const { data, error } = useSWR(IG_USER, fetcher)
-      
-      console.log(data);
-
-      // userInfoSource.data contains the HTML from Axios
-      const jsonObject = data.match(/<script type="text\/javascript">window\._sharedData = (.*)<\/script>/)[1].slice(0, -1)
-
-      const userInfo = JSON.parse(jsonObject)
-      // Retrieve only the first 10 results
-      const mediaArray = userInfo.entry_data.ProfilePage[0].graphql.user.edge_owner_to_timeline_media.edges.splice(0, 10)
-      for (let media of mediaArray) {
-          const node = media.node
-          
-          // Process only if is an image
-          if ((node.__typename && node.__typename !== 'GraphImage')) {
-              continue
-          }
-
-          // Push the thumbnail src in the array
-          res.push(node);
-          console.log(node);
-      }
-  } catch (e) {
-      console.error('Unable to retrieve photos. Reason: ' + e.toString())
-  }
-  
-  return res;
 }
 
 function HeroTestimoni() {
