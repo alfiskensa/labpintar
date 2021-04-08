@@ -255,7 +255,7 @@ function instagramPhotos () {
       const fetcher = url => axios.get(url).then(res => res.data)
       const IG_USER = 'https://www.instagram.com/labpintar/';
       const { data, error } = useSWR(IG_USER, fetcher)
-      // const userInfoSource = await axios.get('https://www.instagram.com/labpintar/')
+      
       console.log(data);
 
       // userInfoSource.data contains the HTML from Axios
